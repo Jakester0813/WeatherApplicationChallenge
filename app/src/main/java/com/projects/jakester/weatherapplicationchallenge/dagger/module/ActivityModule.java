@@ -32,7 +32,8 @@ public class ActivityModule {
     /*
      * Given more time, I would have looked for a way to have WeatherPrefsManager, WeatherAPI,
      * and WeatherNetworkService declared and have provide methods declared in AppModule and
-     * being able to inject them in Main Presenter, but for the interest of time, I had to put them on here.
+     * being able to inject them in Main Presenter as well as being able to modify the architecture
+     * to accommodate for these ideal changes, but for the interest of time, I had to put them on here.
      */
 
 
