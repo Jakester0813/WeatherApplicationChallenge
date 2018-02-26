@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">WeatherApplicationChallenge</string>
+    <string name="input_hint">Enter your location</string>
+    <string name="loading_text">Loading up weatherResponse data. Please wait...</string>
+</resources>

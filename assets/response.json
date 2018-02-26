@@ -1,0 +1,34 @@
+{
+  "coord":{"lon":-122.42,"lat":37.77},
+  "weather":[
+    {"id":701,"main":"Mist","description":"mist","icon":"50n"}
+  ],
+  "base":"stations",
+  "main":{
+    "temp":280.64,
+    "pressure":1024,
+    "humidity":61,
+    "temp_min":277.15,
+    "temp_max":284.15
+  },
+  "visibility":16093,
+  "wind":{
+    "speed":6.7,
+    "deg":300
+  },
+  "clouds":{
+    "all":20
+  },
+  "dt":1487833080,
+  "sys":{
+    "type":1,
+    "id":478,
+    "message":0.0106,
+    "country":"US",
+    "sunrise":1487861304,
+    "sunset":1487901476
+  },
+  "id":5391959,
+  "name":"San Francisco",
+  "cod":200
+}
