@@ -51,6 +51,26 @@
         </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/rl_error_view"
+        android:layout_below="@+id/toolbar"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:layout_width="match_parent">
+
+
+        <TextView
+            android:id="@+id/tv_error"
+            android:paddingTop="10dp"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
         android:id="@+id/rl_weather_layout"
         android:layout_below="@+id/toolbar"
         android:layout_height="wrap_content"

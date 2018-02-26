@@ -13,4 +13,8 @@ public class WeatherConstants {
     public static String APP_ID_QUERY = "&APPID=";
     public static String IMAGE_URL = "http://openweathermap.org/img/w/";
     public static String PNG_EXTENSION = ".png";
+
+    //Error codes
+    public static String LOCATION_NOT_FOUND = "Location not found. Maybe put the name of city or your zipcode?";
+    public static String TIMED_OUT = "Request timed out";
 }

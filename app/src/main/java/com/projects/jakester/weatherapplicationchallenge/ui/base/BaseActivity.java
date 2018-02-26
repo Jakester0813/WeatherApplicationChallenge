@@ -41,4 +41,5 @@ public class BaseActivity extends AppCompatActivity implements IBaseView {
     public void hideLoading() {
 
     }
+
 }

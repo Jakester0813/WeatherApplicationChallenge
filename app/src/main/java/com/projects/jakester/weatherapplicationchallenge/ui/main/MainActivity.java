@@ -39,11 +39,17 @@ public class MainActivity extends BaseActivity implements MainActivityContract.V
     @BindView(R.id.rl_progress_view)
     RelativeLayout mLoadingLayout;
 
+    @BindView(R.id.rl_error_view)
+    RelativeLayout mErrorLayout;
+
     @BindView(R.id.rl_weather_layout)
     RelativeLayout mWeatherLayout;
 
     @BindView(R.id.iv_weather)
     ImageView mWeatherIcon;
+
+    @BindView(R.id.tv_error)
+    TextView mErrorText;
 
     @BindView(R.id.tv_location)
     TextView locationText;
@@ -77,8 +83,14 @@ public class MainActivity extends BaseActivity implements MainActivityContract.V
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                    mPresenter.getWeather(v.getText().toString());
-                    loadPreviousCityAndSearch();
+                    String input = v.getText().toString();
+                    if(mPresenter.isInputACity(input) || mPresenter.isInputAZipCode(input)) {
+                        mPresenter.getWeather(v.getText().toString());
+                        loadPreviousCityAndSearch();
+                    }
+                    else{
+                        showError("Your input is invalid. Perhaps enter a 5 digit zipcode or a city?");
+                    }
                     return true;
                 }
                 return false;
@@ -108,7 +120,6 @@ public class MainActivity extends BaseActivity implements MainActivityContract.V
             mCitySearchEdit.setText(mPresenter.getWeatherLocationPrefs());
             showLoading();
             mPresenter.getWeatherData();
-
         }
     }
 
@@ -121,6 +132,7 @@ public class MainActivity extends BaseActivity implements MainActivityContract.V
     @Override
     public void showLoading() {
         mWeatherLayout.setVisibility(View.GONE);
+        mErrorLayout.setVisibility(View.GONE);
         mLoadingLayout.setVisibility(View.VISIBLE);
     }
 
@@ -128,6 +140,13 @@ public class MainActivity extends BaseActivity implements MainActivityContract.V
     public void hideLoading() {
         mWeatherLayout.setVisibility(View.VISIBLE);
         mLoadingLayout.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showError(String error) {
+        mErrorText.setText(error);
+        mLoadingLayout.setVisibility(View.GONE);
+        mErrorLayout.setVisibility(View.VISIBLE);
     }
 
     @Override

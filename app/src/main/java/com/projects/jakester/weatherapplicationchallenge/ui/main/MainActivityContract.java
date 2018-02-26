@@ -16,6 +16,8 @@ public interface MainActivityContract {
         void loadImage(String url);
 
         void setData(WeatherResponse response);
+
+        void showError(String message);
     }
 
     //view interacts with the presenter via methods listed here
@@ -35,6 +37,10 @@ public interface MainActivityContract {
         String getMinMaxString (double min, double max);
 
         String getLocation(String location);
+
+        boolean isInputAZipCode(String input);
+
+        boolean isInputACity(String input);
 
         void unsubscribeRx();
     }

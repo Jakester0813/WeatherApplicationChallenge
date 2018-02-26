@@ -40,12 +40,17 @@ public class MainPresenter<V extends MainActivityContract.View> extends BasePres
 
     @Override
     public void getWeatherData() {
-        String query;
-        query = Uri.encode(mPrefs.getWeatherLocation());
-        mService.getWeatherDetails(query, new WeatherListener() {
+
+        mService.getWeatherDetails(mPrefs.getWeatherLocation(), new WeatherListener() {
             @Override
             public void onError(String message) {
-                System.out.println(message);
+                if(message.contains("404")){
+                    message = WeatherConstants.LOCATION_NOT_FOUND;
+                }
+                else if(message.contains("408")){
+                    message = WeatherConstants.TIMED_OUT;
+                }
+                mView.showError(message);
             }
 
             @Override
@@ -98,6 +103,25 @@ public class MainPresenter<V extends MainActivityContract.View> extends BasePres
         StringBuilder dayLocationString = new StringBuilder();
         dayLocationString.append(WeatherConstants.TODAY_WEATHER).append(location);
         return dayLocationString.toString();
+    }
+
+    @Override
+    public boolean isInputAZipCode(String input) {
+        return isParsableAsInt(input) && input.length() == 5;
+    }
+
+    @Override
+    public boolean isInputACity(String input) {
+        return input.matches("[ a-zA-Z]+");
+    }
+
+    private boolean isParsableAsInt(String input){
+        try{
+            Integer.valueOf(input);
+        } catch(NumberFormatException e) {
+            return false;
+        }
+        return true;
     }
 
     @Override
