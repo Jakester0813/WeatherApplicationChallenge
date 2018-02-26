@@ -84,6 +84,7 @@ public class MainActivity extends BaseActivity implements MainActivityContract.V
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                     String input = v.getText().toString();
+                    //restricts input down to zip code or city to handle a lot of user input cases
                     if(mPresenter.isInputACity(input) || mPresenter.isInputAZipCode(input)) {
                         mPresenter.getWeather(v.getText().toString());
                         loadPreviousCityAndSearch();
